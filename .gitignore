@@ -4,3 +4,9 @@ temp/*
 .env
 ormconfig.json
 coverage
+.idea/
+.vscode/
+build/
+temp/
+dist
+tmp/*
