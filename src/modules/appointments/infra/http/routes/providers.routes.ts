@@ -5,11 +5,13 @@ import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAut
 import ProvidersController from '../controllers/ProvidersController';
 import ProviderMonthAvailabilityController from '../controllers/ProviderMonthAvailabilityController';
 import ProviderDayAvailabilityController from '../controllers/ProviderDayAvailabilityController';
+import ProvidersAppointmentsAvailabilityController from '../controllers/ProvidersAppointmentsAvailabilityController';
 
 const providersRouter = Router();
 const providersController = new ProvidersController();
 const providersMonthAvailabilityController = new ProviderMonthAvailabilityController();
 const providersDayAvailabilityController = new ProviderDayAvailabilityController();
+const providersAppointmentsAvailabilityController = new ProvidersAppointmentsAvailabilityController();
 
 providersRouter.use(ensureAuthenticated);
 
@@ -31,6 +33,10 @@ providersRouter.get(
     },
   }),
   providersDayAvailabilityController.index,
+);
+providersRouter.get(
+  '/availAbility',
+  providersAppointmentsAvailabilityController.indexAvailability,
 );
 
 export default providersRouter;
