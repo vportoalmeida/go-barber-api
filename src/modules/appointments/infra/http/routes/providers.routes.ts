@@ -35,7 +35,7 @@ providersRouter.get(
   providersDayAvailabilityController.index,
 );
 providersRouter.get(
-  '/availAbility',
+  '/availability',
   providersAppointmentsAvailabilityController.indexAvailability,
 );
 
