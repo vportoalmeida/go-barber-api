@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import aws, { S3 } from 'aws-sdk';
 import mime from 'mime';
 
-import uploadConfig from '@config/upload';
+import uploadConfig from '../../../../../config/upload';
 import IStorageProvider from '../models/IStorageProvider';
 
 class S3StorageProvider implements IStorageProvider {

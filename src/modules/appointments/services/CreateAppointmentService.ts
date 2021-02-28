@@ -1,10 +1,9 @@
 import { startOfHour, isBefore, getHours, format } from 'date-fns';
 import { injectable, inject } from 'tsyringe';
 
-import AppError from '@shared/errors/AppError';
-
-import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
-import INotificationsRepository from '@modules/notifications/repositories/INotificationsRepository';
+import ICacheProvider from '../../../shared/container/providers/CacheProvider/models/ICacheProvider';
+import INotificationsRepository from '../../notifications/repositories/INotificationsRepository';
+import AppError from '../../../shared/errors/AppError';
 import Appointment from '../infra/typeorm/entities/Appointment';
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
 

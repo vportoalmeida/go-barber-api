@@ -6,13 +6,13 @@ import cors from 'cors';
 import { errors } from 'celebrate';
 import 'express-async-errors';
 
-import uploadConfig from '@config/upload';
-import AppError from '@shared/errors/AppError';
+import AppError from '../../errors/AppError';
+import uploadConfig from '../../../config/upload';
 import rateLimiter from './middlewares/rateLimiter';
 import routes from './routes';
 
-import '@shared/infra/typeorm';
-import '@shared/container';
+import '../typeorm';
+import '../../container';
 
 const app = express();
 
