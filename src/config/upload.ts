@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/interface-name-prefix */
 import { diskStorage, StorageEngine } from 'multer';
 import { randomBytes } from 'crypto';
 import { resolve } from 'path';
@@ -32,7 +33,7 @@ export default {
     storage: diskStorage({
       destination: tempFolder,
       filename(req, file, callback) {
-        const fileHash = randomBytes(10).toString('HEX');
+        const fileHash = randomBytes(10).toString('hex');
         const fileName = `${fileHash}-${file.originalname}`;
 
         return callback(null, fileName);
@@ -43,7 +44,7 @@ export default {
   config: {
     disk: {},
     aws: {
-      bucket: 'app-gobarber-manaos-factory',
+      bucket: 'app-gobarber-2',
     },
   },
 } as IUploadConfig;

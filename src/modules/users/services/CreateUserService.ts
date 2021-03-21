@@ -10,6 +10,7 @@ interface IRequestDTO {
   name: string;
   email: string;
   password: string;
+  user_type: string;
 }
 
 @injectable()
@@ -25,7 +26,12 @@ class CreateUserService {
     private cacheProvider: ICacheProvider,
   ) {}
 
-  public async execute({ name, email, password }: IRequestDTO): Promise<User> {
+  public async execute({
+    name,
+    email,
+    password,
+    user_type,
+  }: IRequestDTO): Promise<User> {
     const checkUserExists = await this.usersRepository.findByEmail(email);
 
     if (checkUserExists) {
@@ -38,6 +44,7 @@ class CreateUserService {
       name,
       email,
       password: hashedPassword,
+      user_type,
     });
 
     await this.cacheProvider.invalidatePrefix('providers-list');

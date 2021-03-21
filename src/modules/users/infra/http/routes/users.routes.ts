@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/camelcase */
 import { Router } from 'express';
 import multer from 'multer';
 import { celebrate, Segments, Joi } from 'celebrate';
@@ -21,6 +22,7 @@ usersRouter.post(
       name: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
+      user_type: Joi.string().required(),
     },
   }),
   usersController.create,

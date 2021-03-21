@@ -1,8 +1,8 @@
 import { uuid } from 'uuidv4';
 import { isEqual, getMonth, getYear, getDate } from 'date-fns';
 
-import IFindAllInMonthFromProviderDTO from '../../dtos/IFindAllInMonthFromProviderDTO';
 import IFindAllInDayFromProviderDTO from '../../dtos/IFindAllInDayFromProviderDTO';
+import IFindAllInMonthFromProviderDTO from '../../dtos/IFindAllInMonthFromProviderDTO';
 import ICreateAppointmentDTO from '../../dtos/ICreateAppointmentDTO';
 import IAppointmentsRepository from '../IAppointmentsRepository';
 
@@ -67,6 +67,10 @@ class FakeAppointmentsRepository implements IAppointmentsRepository {
 
     this.appointments.push(appointment);
 
+    return appointment;
+  }
+
+  public async update(appointment: Appointment): Promise<Appointment> {
     return appointment;
   }
 }

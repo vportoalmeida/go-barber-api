@@ -2,9 +2,9 @@ import nodemailer, { Transporter } from 'nodemailer';
 import aws from 'aws-sdk';
 import { injectable, inject } from 'tsyringe';
 
-import IMailTemplateProvider from '../../MailTemplateProvider/models/IMailTemplateProvider';
 import mailConfig from '../../../../../config/mail';
 
+import IMailTemplateProvider from '../../MailTemplateProvider/models/IMailTemplateProvider';
 import IMailProvider from '../models/IMailProvider';
 import ISendMailDTO from '../dtos/ISendMailDTO';
 

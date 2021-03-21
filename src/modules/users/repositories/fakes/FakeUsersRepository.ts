@@ -33,6 +33,10 @@ class FakeUsersRepository implements IUsersRepository {
     return users;
   }
 
+  public async findAllCustomers(): Promise<User[]> {
+    return this.users;
+  }
+
   public async create({
     name,
     email,
