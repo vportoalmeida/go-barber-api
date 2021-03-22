@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/interface-name-prefix */
 import ICacheProvider from '../models/ICacheProvider';
 
 interface ICacheData {

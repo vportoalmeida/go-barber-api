@@ -1,8 +1,8 @@
 import { uuid } from 'uuidv4';
 
-import IFindAllProvidersDTO from '../../dtos/IFindAllProvidersDTO';
-import ICreateUserDTO from '../../dtos/ICreateUserDTO';
-import IUsersRepository from '../IUsersRepository';
+import IUsersRepository from '@modules/users/repositories/IUsersRepository';
+import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
+import IFindAllProvidersDTO from '@modules/users/dtos/IFindAllProvidersDTO';
 
 import User from '../../infra/typeorm/entities/User';
 
@@ -31,10 +31,6 @@ class FakeUsersRepository implements IUsersRepository {
     }
 
     return users;
-  }
-
-  public async findAllCustomers(): Promise<User[]> {
-    return this.users;
   }
 
   public async create({

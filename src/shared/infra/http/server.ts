@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import 'reflect-metadata';
 import 'dotenv/config';
 
@@ -7,16 +6,17 @@ import cors from 'cors';
 import { errors } from 'celebrate';
 import 'express-async-errors';
 
-import AppError from '../../errors/AppError';
-import uploadConfig from '../../../config/upload';
+import uploadConfig from '@config/upload';
+import AppError from '@shared/errors/AppError';
 import rateLimiter from './middlewares/rateLimiter';
 import routes from './routes';
 
-import '../typeorm';
-import '../../container';
+import '@shared/infra/typeorm';
+import '@shared/container';
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use('/files', express.static(uploadConfig.uploadsFolder));
 app.use(rateLimiter);
@@ -25,9 +25,6 @@ app.use(routes);
 app.use(errors());
 
 app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  app.use(cors());
   if (err instanceof AppError) {
     return res
       .status(err.statusCode)
@@ -45,5 +42,5 @@ app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
 
 app.listen(3333, () => {
   // eslint-disable-next-line no-console
-  console.log('🚀 Server started on port 3333!');
+  console.log('Server started on port 3333!');
 });

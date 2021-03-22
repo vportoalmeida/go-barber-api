@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import ListProviderDayAvailabilityService from '../../../services/ListProviderDayAvailabilityService';
+import ListProviderDayAvailabilityService from '@modules/appointments/services/ListProviderDayAvailabilityService';
 
 export default class ProviderDayAvailabilityController {
   public async index(req: Request, res: Response): Promise<Response> {

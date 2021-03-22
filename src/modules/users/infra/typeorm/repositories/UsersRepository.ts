@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { getRepository, Repository, Not } from 'typeorm';
 
-import IFindAllProvidersDTO from '../../../dtos/IFindAllProvidersDTO';
-import ICreateUserDTO from '../../../dtos/ICreateUserDTO';
-import IUsersRepository from '../../../repositories/IUsersRepository';
+import IUsersRepository from '@modules/users/repositories/IUsersRepository';
+import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
+import IFindAllProvidersDTO from '@modules/users/dtos/IFindAllProvidersDTO';
 
 import User from '../entities/User';
 
@@ -28,15 +27,6 @@ class UsersRepository implements IUsersRepository {
     return user;
   }
 
-  public async findAllCustomers(): Promise<User[]> {
-    const users = await this.ormRepository.find({
-      where: {
-        user_type: 'C',
-      },
-    });
-    return users;
-  }
-
   public async findAllProviders({
     except_user_id,
   }: IFindAllProvidersDTO): Promise<User[]> {
@@ -46,15 +36,10 @@ class UsersRepository implements IUsersRepository {
       users = await this.ormRepository.find({
         where: {
           id: Not(except_user_id),
-          user_type: ['A', 'P'],
         },
       });
     } else {
-      users = await this.ormRepository.find({
-        where: {
-          user_type: ['A', 'P'],
-        },
-      });
+      users = await this.ormRepository.find();
     }
 
     return users;
@@ -64,14 +49,8 @@ class UsersRepository implements IUsersRepository {
     name,
     email,
     password,
-    user_type,
   }: ICreateUserDTO): Promise<User> {
-    const user = this.ormRepository.create({
-      name,
-      email,
-      password,
-      user_type,
-    });
+    const user = this.ormRepository.create({ name, email, password });
 
     await this.ormRepository.save(user);
 

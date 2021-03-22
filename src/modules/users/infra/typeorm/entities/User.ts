@@ -8,7 +8,7 @@ import {
 
 import { Exclude, Expose } from 'class-transformer';
 
-import uploadConfig from '../../../../../config/upload';
+import uploadConfig from '@config/upload';
 
 @Entity('users')
 class User {
@@ -28,9 +28,6 @@ class User {
   @Column()
   avatar: string;
 
-  @Column()
-  user_type: string;
-
   @CreateDateColumn()
   created_at: Date;
 
@@ -47,7 +44,7 @@ class User {
       case 'disk':
         return `${process.env.APP_WEB_URL}/files/${this.avatar}`;
       case 's3':
-        return `https://${uploadConfig.config.aws.bucket}/${this.avatar}`;
+        return `https://${uploadConfig.config.aws.bucket}.s3.us-east-2.amazonaws.com/${this.avatar}`;
       default:
         return null;
     }

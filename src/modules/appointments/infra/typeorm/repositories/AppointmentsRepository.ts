@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { getRepository, Repository, Raw } from 'typeorm';
 
-import IFindAllInDayFromProviderDTO from '../../../dtos/IFindAllInDayFromProviderDTO';
-import IFindAllInMonthFromProviderDTO from '../../../dtos/IFindAllInMonthFromProviderDTO';
-import ICreateAppointmentDTO from '../../../dtos/ICreateAppointmentDTO';
-import IAppointmentsRepository from '../../../repositories/IAppointmentsRepository';
+import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
+import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointmentDTO';
+import IFindAllInMonthFromProviderDTO from '@modules/appointments/dtos/IFindAllInMonthFromProviderDTO';
+import IFindAllInDayFromProviderDTO from '@modules/appointments/dtos/IFindAllInDayFromProviderDTO';
 
 import Appointment from '../entities/Appointment';
 
@@ -62,7 +61,6 @@ class AppointmentsRepository implements IAppointmentsRepository {
           dateFieldName =>
             `to_char(${dateFieldName}, 'DD-MM-YYYY') = '${parseDay}-${parseMonth}-${year}'`,
         ),
-        active: true,
       },
       relations: ['user'],
     });
@@ -84,11 +82,6 @@ class AppointmentsRepository implements IAppointmentsRepository {
     await this.ormRepository.save(appointment);
 
     return appointment;
-  }
-
-  public async update(appointment: Appointment): Promise<Appointment> {
-    const result = await this.ormRepository.save(appointment);
-    return result;
   }
 }
 

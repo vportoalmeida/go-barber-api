@@ -1,16 +1,17 @@
-/* eslint-disable @typescript-eslint/camelcase */
 import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
 
-import ensureAuthenticated from '../../../../users/infra/http/middlewares/ensureAuthenticated';
+import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 import ProvidersController from '../controllers/ProvidersController';
 import ProviderMonthAvailabilityController from '../controllers/ProviderMonthAvailabilityController';
 import ProviderDayAvailabilityController from '../controllers/ProviderDayAvailabilityController';
+import ProvidersAppointmentsAvailabilityController from '../controllers/ProvidersAppointmentsAvailabilityController';
 
 const providersRouter = Router();
 const providersController = new ProvidersController();
 const providersMonthAvailabilityController = new ProviderMonthAvailabilityController();
 const providersDayAvailabilityController = new ProviderDayAvailabilityController();
+const providersAppointmentsAvailabilityController = new ProvidersAppointmentsAvailabilityController();
 
 providersRouter.use(ensureAuthenticated);
 
@@ -32,6 +33,10 @@ providersRouter.get(
     },
   }),
   providersDayAvailabilityController.index,
+);
+providersRouter.get(
+  '/availability',
+  providersAppointmentsAvailabilityController.indexAvailability,
 );
 
 export default providersRouter;

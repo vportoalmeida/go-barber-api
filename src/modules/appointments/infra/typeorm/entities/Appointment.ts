@@ -8,8 +8,13 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import User from '../../../../users/infra/typeorm/entities/User';
+import User from '@modules/users/infra/typeorm/entities/User';
 
+/*
+ * Um para um (OnToOne)
+ * Um para muitos (OneToMany)
+ * Muitos para muitos (ManyToMany)
+ */
 @Entity('appointments')
 class Appointment {
   @PrimaryGeneratedColumn('uuid')
@@ -31,9 +36,6 @@ class Appointment {
 
   @Column('time with time zone')
   date: Date;
-
-  @Column()
-  active: boolean;
 
   @CreateDateColumn()
   created_at: Date;
