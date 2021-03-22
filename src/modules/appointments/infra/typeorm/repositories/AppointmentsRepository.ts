@@ -83,6 +83,11 @@ class AppointmentsRepository implements IAppointmentsRepository {
 
     return appointment;
   }
+
+  public async update(appointment: Appointment): Promise<Appointment> {
+    const result = await this.ormRepository.save(appointment);
+    return result;
+  }
 }
 
 export default AppointmentsRepository;
