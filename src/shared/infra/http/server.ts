@@ -17,7 +17,21 @@ import '../../container';
 
 const app = express();
 
-// app.use(cors());
+const options: cors.CorsOptions = {
+  allowedHeaders: [
+    'Origin',
+    'X-Requested-With',
+    'Content-Type',
+    'Accept',
+    'X-Access-Token',
+  ],
+  credentials: false,
+  methods: 'GET, PUT, PATCH, POST, DELETE',
+  origin: ['http://localhost:3000'],
+  preflightContinue: false,
+};
+
+app.use(cors(options));
 app.use(express.json());
 app.use('/files', express.static(uploadConfig.uploadsFolder));
 app.use(rateLimiter);
