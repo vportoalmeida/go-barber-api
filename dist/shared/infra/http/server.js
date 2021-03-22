@@ -6,6 +6,8 @@ require("dotenv/config");
 
 var _express = _interopRequireDefault(require("express"));
 
+var _cors = _interopRequireDefault(require("cors"));
+
 var _celebrate = require("celebrate");
 
 require("express-async-errors");
@@ -25,8 +27,8 @@ require("../../container");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-const app = (0, _express.default)(); // app.use(cors());
-
+const app = (0, _express.default)();
+app.use((0, _cors.default)());
 app.use(_express.default.json());
 app.use('/files', _express.default.static(_upload.default.uploadsFolder));
 app.use(_rateLimiter.default);

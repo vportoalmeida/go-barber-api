@@ -6,11 +6,10 @@
      "username": "postgres",
      "password": "c2c218f1bc7ac6e2ddf1c8e08349533a",
      "database": "gobarber",
-     "entities": ["src/modules/**/infra/typeorm/entities/*.ts"],
-     "migrations": ["src/shared/infra/typeorm/migrations/*.ts"],
+     "entities": ["./dist/modules/**/infra/typeorm/entities/*.js"],
+     "migrations": ["./dist/shared/infra/typeorm/migrations/*.js"],
      "cli": {
-        "entitiesDir": "src/modules/**/infra/typeorm/entities/",
-        "migrationsDir": "src/shared/infra/typeorm/migrations/"
+        "migrationsDir": "./dist/shared/infra/typeorm/migrations/"
      }
   },
   {
@@ -23,7 +22,7 @@
     "database": "gobarber",
     "useUnifiedTopology": true,
     "entities": [
-      "./src/modules/**/infra/typeorm/schemas/*.ts"
+      "./dist/modules/**/infra/typeorm/schemas/*.js"
     ]
   }
 ]
