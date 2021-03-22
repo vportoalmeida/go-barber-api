@@ -5,6 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+/* eslint-disable @typescript-eslint/interface-name-prefix */
 class FakeCacheProvider {
   constructor() {
     this.cache = {};

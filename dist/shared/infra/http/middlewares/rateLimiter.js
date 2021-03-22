@@ -7,9 +7,9 @@ exports.default = rateLimiter;
 
 var _redis = _interopRequireDefault(require("redis"));
 
-var _AppError = _interopRequireDefault(require("../../../errors/AppError"));
-
 var _rateLimiterFlexible = require("rate-limiter-flexible");
+
+var _AppError = _interopRequireDefault(require("../../../errors/AppError"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

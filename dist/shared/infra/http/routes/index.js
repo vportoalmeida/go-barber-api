@@ -7,8 +7,6 @@ exports.default = void 0;
 
 var _express = require("express");
 
-var _sessions = _interopRequireDefault(require("../../../../modules/users/infra/http/routes/sessions.routes"));
-
 var _users = _interopRequireDefault(require("../../../../modules/users/infra/http/routes/users.routes"));
 
 var _password = _interopRequireDefault(require("../../../../modules/users/infra/http/routes/password.routes"));
@@ -18,6 +16,8 @@ var _appointments = _interopRequireDefault(require("../../../../modules/appointm
 var _profile = _interopRequireDefault(require("../../../../modules/users/infra/http/routes/profile.routes"));
 
 var _providers = _interopRequireDefault(require("../../../../modules/appointments/infra/http/routes/providers.routes"));
+
+var _sessions = _interopRequireDefault(require("../../../../modules/users/infra/http/routes/sessions.routes"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

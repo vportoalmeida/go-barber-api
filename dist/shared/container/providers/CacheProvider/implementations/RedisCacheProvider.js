@@ -11,6 +11,7 @@ var _cache = _interopRequireDefault(require("../../../../../config/cache"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 class RedisCacheProvider {
   constructor() {
     this.client = void 0;

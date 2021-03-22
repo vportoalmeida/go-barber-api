@@ -1,9 +1,9 @@
 {
-   "name": "bemol-solar-back",
-   "description": "API - Core Bemol Solar",
+   "name": "go-barber",
+   "description": "",
    "repository": {
       "type": "git",
-      "url": "https://BemolDigital@dev.azure.com/BemolDigital/Novos%20Neg%C3%B3cios/_git/bemol-solar-back"
+      "url": ""
    },
    "version": "1.0.0",
    "main": "index.js",

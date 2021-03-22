@@ -13,7 +13,6 @@ var _CreateUserService = _interopRequireDefault(require("../../../services/Creat
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable @typescript-eslint/camelcase */
 class UsersController {
   async create(req, res) {
     const {

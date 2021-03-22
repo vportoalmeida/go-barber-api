@@ -13,7 +13,6 @@ var _ListProvidersService = _interopRequireDefault(require("../../../services/Li
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable @typescript-eslint/camelcase */
 class ProvidersController {
   async index(req, res) {
     const user_id = req.user.id;

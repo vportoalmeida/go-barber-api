@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+/* eslint-disable @typescript-eslint/interface-name-prefix */
 class AppError {
   constructor(message, statusCode = 400, errors = []) {
     this.message = void 0;

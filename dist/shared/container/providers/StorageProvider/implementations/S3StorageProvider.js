@@ -17,6 +17,7 @@ var _upload = _interopRequireDefault(require("../../../../../config/upload"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/* eslint-disable @typescript-eslint/no-var-requires */
 class S3StorageProvider {
   constructor() {
     this.client = void 0;
@@ -27,8 +28,11 @@ class S3StorageProvider {
 
   async saveFile(file) {
     const originalPath = (0, _path.resolve)(_upload.default.tempFolder, file);
+    this.client.putObject();
 
-    const ContentType = _mime.default.getType(originalPath);
+    const fileName = _mime.default.lookup(originalPath);
+
+    const ContentType = fileName.split('.')[1];
 
     if (!ContentType) {
       throw new Error('File not found');

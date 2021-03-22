@@ -58,6 +58,10 @@ class FakeAppointmentsRepository {
     return appointment;
   }
 
+  async update(appointment) {
+    return appointment;
+  }
+
 }
 
 var _default = FakeAppointmentsRepository;

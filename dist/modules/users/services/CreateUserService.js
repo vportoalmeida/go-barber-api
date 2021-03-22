@@ -7,9 +7,9 @@ exports.default = void 0;
 
 var _tsyringe = require("tsyringe");
 
-var _AppError = _interopRequireDefault(require("../../../shared/errors/AppError"));
-
 var _ICacheProvider = _interopRequireDefault(require("../../../shared/container/providers/CacheProvider/models/ICacheProvider"));
+
+var _AppError = _interopRequireDefault(require("../../../shared/errors/AppError"));
 
 var _IUsersRepository = _interopRequireDefault(require("../repositories/IUsersRepository"));
 

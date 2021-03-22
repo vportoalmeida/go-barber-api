@@ -40,6 +40,10 @@ class FakeUsersRepository {
     return users;
   }
 
+  async findAllCustomers() {
+    return this.users;
+  }
+
   async create({
     name,
     email,

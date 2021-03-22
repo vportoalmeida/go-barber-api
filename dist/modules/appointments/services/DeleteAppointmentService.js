@@ -9,11 +9,11 @@ var _dateFns = require("date-fns");
 
 var _tsyringe = require("tsyringe");
 
-var _AppError = _interopRequireDefault(require("../../../shared/errors/AppError"));
+var _INotificationsRepository = _interopRequireDefault(require("../../notifications/repositories/INotificationsRepository"));
 
 var _ICacheProvider = _interopRequireDefault(require("../../../shared/container/providers/CacheProvider/models/ICacheProvider"));
 
-var _INotificationsRepository = _interopRequireDefault(require("../../notifications/repositories/INotificationsRepository"));
+var _AppError = _interopRequireDefault(require("../../../shared/errors/AppError"));
 
 var _IAppointmentsRepository = _interopRequireDefault(require("../repositories/IAppointmentsRepository"));
 

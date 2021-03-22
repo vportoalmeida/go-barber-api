@@ -9,9 +9,9 @@ var _tsyringe = require("tsyringe");
 
 var _classTransformer = require("class-transformer");
 
-var _ICacheProvider = _interopRequireDefault(require("../../../shared/container/providers/CacheProvider/models/ICacheProvider"));
-
 var _IUsersRepository = _interopRequireDefault(require("../../users/repositories/IUsersRepository"));
+
+var _ICacheProvider = _interopRequireDefault(require("../../../shared/container/providers/CacheProvider/models/ICacheProvider"));
 
 var _dec, _dec2, _dec3, _dec4, _dec5, _class;
 

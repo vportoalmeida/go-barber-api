@@ -9,9 +9,9 @@ var _tsyringe = require("tsyringe");
 
 var _path = require("path");
 
-var _AppError = _interopRequireDefault(require("../../../shared/errors/AppError"));
-
 var _IMailProvider = _interopRequireDefault(require("../../../shared/container/providers/MailProvider/models/IMailProvider"));
+
+var _AppError = _interopRequireDefault(require("../../../shared/errors/AppError"));
 
 var _IUsersRepository = _interopRequireDefault(require("../repositories/IUsersRepository"));
 

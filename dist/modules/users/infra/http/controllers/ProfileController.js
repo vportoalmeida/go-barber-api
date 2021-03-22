@@ -9,9 +9,9 @@ var _tsyringe = require("tsyringe");
 
 var _classTransformer = require("class-transformer");
 
-var _UpdateProfileService = _interopRequireDefault(require("../../../services/UpdateProfileService"));
-
 var _ShowProfileService = _interopRequireDefault(require("../../../services/ShowProfileService"));
+
+var _UpdateProfileService = _interopRequireDefault(require("../../../services/UpdateProfileService"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

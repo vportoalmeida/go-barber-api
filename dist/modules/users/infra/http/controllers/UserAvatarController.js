@@ -13,7 +13,6 @@ var _UpdateUserAvatarService = _interopRequireDefault(require("../../../services
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* eslint-disable @typescript-eslint/camelcase */
 class UserAvatarController {
   async update(req, res) {
     const updateUserAvatar = _tsyringe.container.resolve(_UpdateUserAvatarService.default);
