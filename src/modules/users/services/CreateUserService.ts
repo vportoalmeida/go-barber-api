@@ -33,7 +33,7 @@ class CreateUserService {
     user_type,
   }: IRequestDTO): Promise<User> {
     const checkUserExists = await this.usersRepository.findByEmail(email);
-
+    console.log(name);
     if (checkUserExists) {
       throw new AppError('E-mail address already used.');
     }

@@ -6,6 +6,7 @@ export default interface IUsersRepository {
   findAllProviders(data: IFindAllProvidersDTO): Promise<User[]>;
   findAllCustomers(): Promise<User[]>;
   findById(id: string): Promise<User | undefined>;
+  findAllUsers(): Promise<User[]>;
   findByEmail(email: string): Promise<User | undefined>;
   create(data: ICreateUserDTO): Promise<User>;
   save(data: User): Promise<User>;

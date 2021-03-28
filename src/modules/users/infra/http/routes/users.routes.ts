@@ -34,4 +34,9 @@ usersRouter.patch(
   userAvatarController.update,
 );
 
+usersRouter.get('/', usersController.index);
+usersRouter.get('/:id', usersController.get);
+usersRouter.get('/:email', usersController.getByEmail);
+usersRouter.put('/:id', usersController.update);
+
 export default usersRouter;

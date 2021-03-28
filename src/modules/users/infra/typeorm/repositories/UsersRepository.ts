@@ -1,4 +1,4 @@
-import { getRepository, Repository, Not } from 'typeorm';
+import { getRepository, Repository, Raw } from 'typeorm';
 
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
@@ -44,14 +44,26 @@ class UsersRepository implements IUsersRepository {
     if (except_user_id) {
       users = await this.ormRepository.find({
         where: {
-          id: Not(except_user_id),
-          user_type: ['A', 'P'],
+          user_type: Raw(
+            `"user_type" AND ("user_type" LIKE '%A%' OR "user_type" LIKE '%P%')`,
+          ),
         },
       });
+      //  users = await this.ormRepository.find({
+      //    where: {
+      //      id: Not(except_user_id),
+      //      user_type: ['A', 'P'],
+      //    },
+      //  });
     } else {
       users = await this.ormRepository.find();
     }
 
+    return users;
+  }
+
+  public async findAllUsers(): Promise<User[]> {
+    const users = await this.ormRepository.find();
     return users;
   }
 
