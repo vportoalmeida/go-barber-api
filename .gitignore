@@ -9,7 +9,6 @@ temp/
 dist
 tmp/*
 ormconfig.json
-.env
 
 
 
