@@ -8,5 +8,7 @@ build/
 temp/
 dist
 tmp/*
+.env
+ormconfig.json
 
 
