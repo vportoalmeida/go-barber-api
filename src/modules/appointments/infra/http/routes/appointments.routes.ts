@@ -5,11 +5,13 @@ import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAut
 import AppointmentsController from '../controllers/AppointmentsController';
 import AppointmentsDeleteController from '../controllers/AppointmentsDeleteController';
 import ProviderAppointmentsController from '../controllers/ProviderAppointmentsController';
+import UserAppointmentsController from '../controllers/UserAppointmentsController';
 
 const appointmentsRouter = Router();
 const appointmentsController = new AppointmentsController();
 const appointmentsDeleteController = new AppointmentsDeleteController();
 const providerAppointmentsController = new ProviderAppointmentsController();
+const userAppointmentsController = new UserAppointmentsController();
 
 appointmentsRouter.use(ensureAuthenticated);
 
@@ -34,5 +36,6 @@ appointmentsRouter.post(
   appointmentsDeleteController.delete,
 );
 appointmentsRouter.get('/me', providerAppointmentsController.index);
+appointmentsRouter.get('/user/me', userAppointmentsController.index);
 
 export default appointmentsRouter;
