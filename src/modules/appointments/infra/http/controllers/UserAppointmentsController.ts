@@ -4,7 +4,7 @@ import { classToClass } from 'class-transformer';
 
 import ListUserAppointmentsService from '@modules/appointments/services/ListUserAppointmentsService';
 
-export default class ProviderAppointmentsController {
+export default class UserAppointmentsController {
   public async index(req: Request, res: Response): Promise<Response> {
     const user_id = req.user.id;
     const { day, month, year } = req.query;

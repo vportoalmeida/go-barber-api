@@ -90,7 +90,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
     return appointments;
   }
 
-  public async findAllInDayFromUser({
+  public async findAllInFroTodayFromUser({
     user_id,
     month,
     year,
@@ -104,7 +104,7 @@ class AppointmentsRepository implements IAppointmentsRepository {
         user_id,
         date: Raw(
           dateFieldName =>
-            `to_char(${dateFieldName}, 'DD-MM-YYYY') = '${parseDay}-${parseMonth}-${year}'`,
+            `to_char(${dateFieldName}, 'DD-MM-YYYY') >= '${parseDay}-${parseMonth}-${year}'`,
         ),
       },
       relations: ['user'],

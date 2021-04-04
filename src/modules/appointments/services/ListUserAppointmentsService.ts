@@ -1,9 +1,10 @@
+/* eslint-disable no-var */
 import { injectable, inject } from 'tsyringe';
-import { classToClass } from 'class-transformer';
 
-import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
-import Appointment from '../infra/typeorm/entities/Appointment';
 import IAppointmentsRepository from '../repositories/IAppointmentsRepository';
+import IUsersRepository from '../../users/repositories/IUsersRepository';
+
+import IUserAppointmentReturnDTO from '../dtos/IUserAppointmentReturnDTO';
 
 interface IRequestDTO {
   user_id: string;
@@ -18,8 +19,8 @@ class ListUserAppointmentsService {
     @inject('AppointmentsRepository')
     private appointmentsRepository: IAppointmentsRepository,
 
-    @inject('CacheProvider')
-    private cacheProvider: ICacheProvider,
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
   ) {}
 
   public async execute({
@@ -27,25 +28,56 @@ class ListUserAppointmentsService {
     year,
     month,
     day,
-  }: IRequestDTO): Promise<Appointment[]> {
-    const cacheKey = `user-appointments:${user_id}:${year}-${month}-${day}`;
+  }: IRequestDTO): Promise<IUserAppointmentReturnDTO[]> {
+    var returnUserAppointment: IUserAppointmentReturnDTO[] = [];
+    var userAppointment: IUserAppointmentReturnDTO;
 
-    let appointments = await this.cacheProvider.recover<Appointment[]>(
-      cacheKey,
-    );
-
-    if (!appointments) {
-      appointments = await this.appointmentsRepository.findAllInDayFromUser({
+    const appointments = await this.appointmentsRepository.findAllInFroTodayFromUser(
+      {
         user_id,
         day,
         month,
         year,
-      });
+      },
+    );
 
-      await this.cacheProvider.save(cacheKey, classToClass(appointments));
-    }
-
-    return appointments;
+    const promise = appointments.map(async appointment => {
+      const provider = await this.usersRepository.findById(
+        appointment.provider_id,
+      );
+      if (provider) {
+        userAppointment = {
+          id: appointment.id,
+          date: appointment.date,
+          active: appointment.active,
+          created_at: appointment.created_at,
+          updated_at: appointment.updated_at,
+          user: {
+            id: appointment.user.id,
+            name: appointment.user.name,
+            email: appointment.user.email,
+            avatar: appointment.user.avatar,
+            user_type: appointment.user.user_type,
+            created_at: appointment.user.created_at,
+            updated_at: appointment.user.updated_at,
+            avatar_url: appointment.user.getAvatarUrl(),
+          },
+          provider: {
+            id: provider.id,
+            name: provider.name,
+            email: provider.email,
+            avatar: provider.avatar,
+            user_type: provider.user_type,
+            created_at: provider.created_at,
+            updated_at: provider.updated_at,
+            avatar_url: provider.getAvatarUrl(),
+          },
+        };
+        returnUserAppointment.push(userAppointment);
+      }
+    });
+    await Promise.all(promise);
+    return returnUserAppointment;
   }
 }
 
