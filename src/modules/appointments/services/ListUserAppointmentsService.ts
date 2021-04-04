@@ -42,38 +42,40 @@ class ListUserAppointmentsService {
     );
 
     const promise = appointments.map(async appointment => {
-      const provider = await this.usersRepository.findById(
-        appointment.provider_id,
-      );
-      if (provider) {
-        userAppointment = {
-          id: appointment.id,
-          date: appointment.date,
-          active: appointment.active,
-          created_at: appointment.created_at,
-          updated_at: appointment.updated_at,
-          user: {
-            id: appointment.user.id,
-            name: appointment.user.name,
-            email: appointment.user.email,
-            avatar: appointment.user.avatar,
-            user_type: appointment.user.user_type,
-            created_at: appointment.user.created_at,
-            updated_at: appointment.user.updated_at,
-            avatar_url: appointment.user.getAvatarUrl(),
-          },
-          provider: {
-            id: provider.id,
-            name: provider.name,
-            email: provider.email,
-            avatar: provider.avatar,
-            user_type: provider.user_type,
-            created_at: provider.created_at,
-            updated_at: provider.updated_at,
-            avatar_url: provider.getAvatarUrl(),
-          },
-        };
-        returnUserAppointment.push(userAppointment);
+      if (appointment.active) {
+        const provider = await this.usersRepository.findById(
+          appointment.provider_id,
+        );
+        if (provider) {
+          userAppointment = {
+            id: appointment.id,
+            date: appointment.date,
+            active: appointment.active,
+            created_at: appointment.created_at,
+            updated_at: appointment.updated_at,
+            user: {
+              id: appointment.user.id,
+              name: appointment.user.name,
+              email: appointment.user.email,
+              avatar: appointment.user.avatar,
+              user_type: appointment.user.user_type,
+              created_at: appointment.user.created_at,
+              updated_at: appointment.user.updated_at,
+              avatar_url: appointment.user.getAvatarUrl(),
+            },
+            provider: {
+              id: provider.id,
+              name: provider.name,
+              email: provider.email,
+              avatar: provider.avatar,
+              user_type: provider.user_type,
+              created_at: provider.created_at,
+              updated_at: provider.updated_at,
+              avatar_url: provider.getAvatarUrl(),
+            },
+          };
+          returnUserAppointment.push(userAppointment);
+        }
       }
     });
     await Promise.all(promise);
