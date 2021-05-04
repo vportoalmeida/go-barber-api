@@ -12,8 +12,8 @@ export default {
   driver: process.env.MAIL_DRIVER || 'ethereal',
   defaults: {
     from: {
-      email: 'v.almeida1284@gmail.com',
-      name: 'Vinicius Almeida',
+      email: 'no-reply.donbarzini@manaosfactory.com',
+      name: 'Equipe Don Barzini',
     },
   },
 } as IMailConfig;
