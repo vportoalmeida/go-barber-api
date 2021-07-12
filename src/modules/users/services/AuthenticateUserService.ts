@@ -52,6 +52,7 @@ class AuthenticateUserService {
       subject: user.id,
       expiresIn,
     });
+    // restart workflow
     return { user, token };
   }
 }
