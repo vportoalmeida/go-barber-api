@@ -12,7 +12,7 @@ export default {
   driver: process.env.MAIL_DRIVER || 'ethereal',
   defaults: {
     from: {
-      email: 'no-reply.donbarzini@manaosfactory.com',
+      email: 'contato.donbarzini@manaosfactory.com',
       name: 'Equipe Don Barzini',
     },
   },
